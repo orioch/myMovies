@@ -4,18 +4,23 @@ import Video from "./components/Video";
 import { useDispatch } from "react-redux";
 import { getList } from "./redux/features/listSlice";
 import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Main from "./pages/Main";
+import MoviePage from "./pages/MoviePage";
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getList({ listType: "movie", listName: "popular" }));
-    dispatch(getList({ listType: "movie", listName: "top_rated" }));
-    dispatch(getList({ listType: "movie", listName: "upcoming" }));
-    dispatch(getList({ listType: "tv", listName: "popular" }));
-    dispatch(getList({ listType: "tv", listName: "top_rated" }));
-    dispatch(getList({ listType: "tv", listName: "on_the_air" }));
-  }, []);
-  return <div className="App"></div>;
+
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="movie" element={<MoviePage />}>
+          <Route path=":id" element={<MoviePage />} />
+        </Route>
+      </Routes>
+    </div>
+  );
 }
 
 export default App;
