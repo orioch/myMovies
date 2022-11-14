@@ -1,25 +1,29 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const apiKey = "8b01a7b87cdb38e6c9f92b17ae90ef7e";
-const popularUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+
 const initialState = {
-  popular: [],
+  lists: {},
 };
 
-export const getPopular = createAsyncThunk("users/getPopular", () => {
-  return fetch(popularUrl)
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
-});
+export const getList = createAsyncThunk(
+  "users/getList",
+  ({ listType, listName }) => {
+    const url = `https://api.themoviedb.org/3/${listType}/${listName}?api_key=${apiKey}&language=en-US&page=1`;
+    return fetch(url)
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+  }
+);
 
 const listsSlice = createSlice({
   name: "data",
   initialState,
   reducers: {},
   extraReducers: {
-    [getPopular.fulfilled]: (state, action) => {
-      state.popular = action.payload.results;
-      console.log(state.popular);
+    [getList.fulfilled]: (state, action) => {
+      const { listType, listName } = action.meta.arg;
+      state.lists[listType + "_" + listName] = action.payload.results;
     },
   },
 });
