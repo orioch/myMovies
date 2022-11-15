@@ -14,11 +14,9 @@ export default function MoviePage({ type }) {
   if (!movie) return <div>loading</div>;
   return (
     <div className="page" style={backgroundStyle(movie.backdrop_path)}>
-      <div className="background">
-        <img className="logo" src={logo} />
-        <div className="overview">{movie.overview}</div>
-        <button className="play-btn"></button>
-      </div>
+      <img className="logo" src={logo} />
+      <div className="overview">{movie.overview}</div>
+      <button className="play-btn">Play Trailer</button>
     </div>
   );
 }
