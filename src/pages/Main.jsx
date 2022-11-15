@@ -16,6 +16,8 @@ export default function Main() {
   return (
     <div>
       <Slider listType="movie" listName="popular" />
+      <Slider listType="movie" listName="top_rated" />
+      <Slider listType="tv" listName="popular" />
     </div>
   );
 }

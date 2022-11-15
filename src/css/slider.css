@@ -1,0 +1,21 @@
+.slider {
+  display: flex;
+  width: 1361px;
+  height: 274px;
+}
+
+.card {
+}
+
+.poster {
+  cursor: pointer;
+  margin: 0 10px 0 10px;
+  width: 150px;
+  height: 215px;
+  border-radius: 10px;
+  transition: width 1s, height 1s;
+}
+.poster:hover {
+  width: 180px;
+  height: 245px;
+}
