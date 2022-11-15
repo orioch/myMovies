@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchLogo, fetchMovie } from "../components/utils/api";
+import { fetchLogo, fetchMovie, imgUrl } from "../components/utils/api";
+import { backgroundStyle } from "../components/utils/styling";
 import "../css/moviePage.css";
 export default function MoviePage({ type }) {
   let id = useParams().id;
@@ -12,9 +13,9 @@ export default function MoviePage({ type }) {
   }, []);
   if (!movie) return <div>loading</div>;
   return (
-    <div className="page">
+    <div className="page" style={backgroundStyle(movie.backdrop_path)}>
       <div className="background">
-        <img src={logo} />
+        <img className="logo" src={logo} />
         <div className="overview">{movie.overview}</div>
         <button className="play-btn"></button>
       </div>
