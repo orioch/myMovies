@@ -1,0 +1,32 @@
+body {
+  background: #010100;
+}
+
+.background {
+  height: calc(100vw);
+  width: 100vw;
+  margin-top: 150px;
+}
+.title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 75px;
+  /* identical to box height */
+
+  color: #f5f5f5;
+}
+
+.overview {
+  color: #f5f5f5;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+}
+
+.play-btn {
+}

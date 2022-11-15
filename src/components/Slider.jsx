@@ -14,7 +14,7 @@ export default function Slider({ listType, listName }) {
   return (
     <div className="slider">
       {list.map((item) => (
-        <Link to={"/movie/" + item.id} key={item.id} className="card">
+        <Link to={`/${listType}/${item.id}`} key={item.id} className="card">
           <img
             className="poster"
             src={"https://image.tmdb.org/t/p/original" + item.poster_path}

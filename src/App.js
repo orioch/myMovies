@@ -15,8 +15,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="movie" element={<MoviePage />}>
-          <Route path=":id" element={<MoviePage />} />
+        <Route path="movie" element={<MoviePage type={"movie"} />}>
+          <Route path=":id" element={<MoviePage type={"movie"} />} />
+        </Route>
+        <Route path="tv" element={<MoviePage type={"tv"} />}>
+          <Route path=":id" element={<MoviePage type={"tv"} />} />
         </Route>
       </Routes>
     </div>
