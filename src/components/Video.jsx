@@ -9,6 +9,7 @@ export default function Video({ id, isOpen, handleOpen }) {
       autoplay: 0,
     },
   };
+
   const _onReady = (event) => {
     setPlayerElement(event);
   };

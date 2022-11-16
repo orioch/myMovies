@@ -78,6 +78,7 @@ body {
   height: 90vh;
   width: 90vw;
 }
+
 .modal .close-btn {
   transition: right 0.5s, top 0.5s, width 0.5s, font-size 0.5s, color 0.5s,
     background-color 0.5s;
