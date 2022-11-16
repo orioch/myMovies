@@ -78,7 +78,35 @@ body {
   height: 90vh;
   width: 90vw;
 }
+.modal .close-btn {
+  transition: right 0.5s, top 0.5s, width 0.5s, font-size 0.5s, color 0.5s,
+    background-color 0.5s;
+  position: absolute;
 
+  border: none;
+
+  border-radius: 30px;
+}
+.modal.off .close-btn {
+  width: 0;
+  font-size: 0;
+  right: 50vw;
+  top: 50vh;
+  background-color: rgba(45, 89, 199, 0);
+  color: #f5f5f500;
+}
+.modal.on .close-btn {
+  background-color: rgb(45, 89, 199);
+  color: #f5f5f5;
+  width: 70px;
+  font-size: 40px;
+  right: 1vw;
+  top: 1vh;
+}
+.modal.on .close-btn:hover {
+  cursor: pointer;
+  width: 80px;
+}
 @media only screen and (max-width: 600px) {
   .logo {
     width: 90vw;

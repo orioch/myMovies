@@ -17,7 +17,10 @@ export default function Video({ id, isOpen, handleOpen }) {
     playerElement.target.pauseVideo();
   };
   return (
-    <div onClick={closeModal} className={`modal${isOpen ? " on" : " off"}`}>
+    <div className={`modal${isOpen ? " on" : " off"}`}>
+      <button onClick={closeModal} className="close-btn">
+        x
+      </button>
       <YouTube onReady={_onReady} videoId={id} opts={opts} />
     </div>
   );
