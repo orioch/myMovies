@@ -48,6 +48,32 @@ body {
   height: 65px;
 }
 
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  background-color: #ff000000;
+  height: 0;
+  overflow: hidden;
+  transition: background-color 1s;
+}
+.modal.on {
+  height: 100vh;
+  background-color: #242424be;
+}
+
+.modal iframe {
+  height: 0;
+  width: 0;
+  transition: height 0.5s, width 0.5s;
+}
+.modal.on iframe {
+  height: 90vh;
+  width: 90vw;
+}
+
 @media only screen and (max-width: 600px) {
   .logo {
     width: 90vw;

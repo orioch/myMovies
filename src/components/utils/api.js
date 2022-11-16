@@ -22,3 +22,13 @@ export const fetchLogo = async (type, id, setFunction) => {
   let response = await (await fetch(url)).json();
   setFunction(imgUrl + response.logos[0].file_path);
 };
+
+export const fetchTrailer = async (type, id, setFunction) => {
+  const url = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${apiKey}&language=en-US`;
+  let response = await (await fetch(url)).json();
+  let youtubeId = response.results.find(
+    (video) => video.type == "Trailer" && video.site == "YouTube"
+  ).key;
+  setFunction(youtubeId);
+  return youtubeId;
+};
