@@ -11,9 +11,25 @@ export default function Video({ id }) {
     },
   };
 
+<<<<<<< Updated upstream
   return (
     <div>
       <YouTube videoId={id} opts={opts} />
+=======
+  const _onReady = (event) => {
+    setPlayerElement(event);
+  };
+  const closeModal = () => {
+    handleOpen(false);
+    playerElement.target.pauseVideo();
+  };
+  return (
+    <div className={`modal${isOpen ? " on" : " off"}`}>
+      <button onClick={closeModal} className="close-btn">
+        x
+      </button>
+      <YouTube onReady={_onReady} videoId={id} opts={opts} />
+>>>>>>> Stashed changes
     </div>
   );
 }
