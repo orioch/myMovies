@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-export default function MoviePage() {
+import {
+  fetchLogo,
+  fetchMovie,
+  fetchTrailer,
+  imgUrl,
+} from "../components/utils/api";
+import { backgroundStyle } from "../components/utils/styling";
+import Video from "../components/Video";
+import "../css/moviePage.css";
+export default function MoviePage({ type }) {
   let id = useParams().id;
-  return <div>MoviePage {id}</div>;
+  const [movie, setMovie] = useState(undefined);
+  const [logo, setLogo] = useState(undefined);
+  const [trailerId, setTrailerId] = useState("");
+  const [trailerModal, setTrailerModal] = useState(false);
+
+  useEffect(() => {
+    fetchMovie(type, id, setMovie);
+    fetchLogo(type, id, setLogo);
+    fetchTrailer(type, id, setTrailerId);
+  }, []);
+  if (!movie) return <div>loading</div>;
+  return (
+    <div className="page" style={backgroundStyle(movie.backdrop_path)}>
+      <img className="logo" src={logo} />
+      <div className="overview">{movie.overview}</div>
+      <button
+        onClick={() => setTrailerModal(!trailerModal)}
+        className="play-btn"
+      >
+        Watch Trailer
+      </button>
+      <Video
+        id={trailerId}
+        isOpen={trailerModal}
+        handleOpen={setTrailerModal}
+      />
+    </div>
+  );
 }

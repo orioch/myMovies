@@ -1,5 +1,6 @@
 .slider {
   display: flex;
+  overflow: scroll;
   width: 1361px;
   height: 274px;
 }
