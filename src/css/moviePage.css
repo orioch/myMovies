@@ -1,0 +1,122 @@
+body {
+  background: #010100;
+}
+
+.page {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  width: 40vw;
+  margin: 50px 0 0 60px;
+}
+
+.overview {
+  color: #f5f5f5;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: left;
+  margin: 20px 70px 0 60px;
+  /* identical to box height */
+}
+
+.play-btn {
+  cursor: pointer;
+  width: 200px;
+  height: 60px;
+  background-color: #6500a9;
+  color: #f5f5f5;
+  font-size: 15px;
+  filter: drop-shadow(5px 5px 5px #5f009e7a);
+  padding: 4px 8px;
+  text-align: center;
+  border: none;
+  border-radius: 25px;
+  transition: width 0.3s, height 0.3s, font-size 0.3s;
+  margin: auto;
+  margin-top: 50px;
+}
+.play-btn:hover {
+  font-size: 20px;
+  width: 205px;
+  height: 65px;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: #ff000000;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  transition: background-color 1s;
+}
+.modal.on {
+  background-color: #242424be;
+}
+.modal.off {
+  pointer-events: none;
+  background-color: #24242400;
+}
+
+.modal iframe {
+  transition: height 0.5s, width 0.5s;
+}
+.modal.off iframe {
+  height: 0;
+  width: 0;
+}
+.modal.on iframe {
+  height: 90vh;
+  width: 90vw;
+}
+
+.modal .close-btn {
+  transition: right 0.5s, top 0.5s, width 0.5s, font-size 0.5s, color 0.5s,
+    background-color 0.5s;
+  position: absolute;
+
+  border: none;
+
+  border-radius: 30px;
+}
+.modal.off .close-btn {
+  width: 0;
+  font-size: 0;
+  right: 50vw;
+  top: 50vh;
+  background-color: rgba(45, 89, 199, 0);
+  color: #f5f5f500;
+}
+.modal.on .close-btn {
+  background-color: rgb(45, 89, 199);
+  color: #f5f5f5;
+  width: 70px;
+  font-size: 40px;
+  right: 1vw;
+  top: 1vh;
+}
+.modal.on .close-btn:hover {
+  cursor: pointer;
+  width: 80px;
+}
+@media only screen and (max-width: 600px) {
+  .logo {
+    width: 90vw;
+    margin: auto;
+    margin-bottom: 0;
+  }
+  .overview {
+    margin: auto;
+    text-align: center;
+    margin: 40px 10px 0 10px;
+  }
+}
