@@ -53,21 +53,26 @@ body {
   justify-content: center;
   align-items: center;
   position: fixed;
-  width: 100vw;
   background-color: #ff000000;
-  height: 0;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
   transition: background-color 1s;
 }
 .modal.on {
-  height: 100vh;
   background-color: #242424be;
+}
+.modal.off {
+  pointer-events: none;
+  background-color: #24242400;
 }
 
 .modal iframe {
+  transition: height 0.5s, width 0.5s;
+}
+.modal.off iframe {
   height: 0;
   width: 0;
-  transition: height 0.5s, width 0.5s;
 }
 .modal.on iframe {
   height: 90vh;
