@@ -12,10 +12,11 @@ export default function CastList({ type, id }) {
     <div className="cast-list">
       {actorsList.map((actor) => (
         <div key={actor.id} className="actor-card">
-          <div className="actor-title">{actor.name}</div>
           <img className="actor-img" src={imgUrl + actor.profile_path} />
+          <div className="actor-title">{actor.name}</div>
         </div>
       ))}
+      <div className="actor-card">show more</div>
     </div>
   );
 }
