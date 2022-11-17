@@ -2,6 +2,7 @@
 
 const apiKey = "8b01a7b87cdb38e6c9f92b17ae90ef7e";
 export const imgUrl = "http://image.tmdb.org/t/p/original";
+
 export const fetchList = async (listType, listName, setFunction) => {
   const url = `https://api.themoviedb.org/3/${listType}/${listName}?api_key=${apiKey}&language=en-US&page=1`;
   let response = await (await fetch(url)).json();
@@ -31,4 +32,12 @@ export const fetchTrailer = async (type, id, setFunction) => {
   ).key;
   setFunction(youtubeId);
   return youtubeId;
+};
+
+export const fetchActors = async (type, id, setFunction, amount) => {
+  const url = `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${apiKey}`;
+  let response = await (await fetch(url)).json();
+  let cast = response.cast.slice(0, amount);
+  setFunction(cast);
+  return cast;
 };

@@ -1,0 +1,10 @@
+.cast-list {
+  background-color: aqua;
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+}
+
+.cast-list .actor-img {
+  width: 150px;
+}
