@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import MoviePage from "./pages/MoviePage";
+import ActorPage from "./pages/ActorPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route path="tv" element={<MoviePage type={"tv"} />}>
           <Route path=":id" element={<MoviePage type={"tv"} />} />
+        </Route>
+        <Route path="actor" element={<ActorPage />}>
+          <Route path=":id" element={<ActorPage />} />
         </Route>
       </Routes>
     </div>
