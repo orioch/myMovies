@@ -4,7 +4,8 @@ body {
 
 .actor-page {
   display: flex;
-  justify-content: row;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .card-column {
@@ -55,4 +56,13 @@ body {
 }
 .info p {
   margin: 0;
+}
+
+.overview-column {
+  border-radius: 20px;
+  background-color: #2d4263;
+  margin: 30px auto 0 auto;
+  width: 60vw;
+  min-height: 300px;
+  height: fit-content;
 }

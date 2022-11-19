@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ActorInfoCard from "../components/ActorInfoCard";
+import ActorOverview from "../components/ActorOverview";
 import {
   fetchExternalLinks,
   fetchPerson,
@@ -22,8 +23,7 @@ export default function ActorPage() {
   return (
     <div className="actor-page">
       <ActorInfoCard person={person} externalLinks={externalLinks} />
-
-      <div className="overview-column"></div>
+      <ActorOverview />
     </div>
   );
 }
