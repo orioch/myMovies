@@ -23,7 +23,7 @@ export default function ActorPage() {
   return (
     <div className="actor-page">
       <ActorInfoCard person={person} externalLinks={externalLinks} />
-      <ActorOverview />
+      <ActorOverview person={person} />
     </div>
   );
 }

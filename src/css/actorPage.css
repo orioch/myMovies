@@ -12,7 +12,7 @@ body {
   width: 30vw;
   background-color: #2d4263;
   height: fit-content;
-  min-height: 100vh;
+  min-height: 100rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +62,9 @@ body {
   border-radius: 20px;
   background-color: #2d4263;
   margin: 30px auto 0 auto;
-  width: 60vw;
+  width: 50vw;
   min-height: 300px;
   height: fit-content;
+  text-align: left;
+  padding: 2% 10% 2% 2%;
 }
