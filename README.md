@@ -40,4 +40,8 @@ You can see a live demo of the project in [oriochayon.com/myMovies](https://orio
 
 ## Acknowledgements
 
+### media and icons
+ * Instagram and Facebook icons created by [Pixel perfect - Flaticon](https://www.flaticon.com/authors/pixel-perfect)
+ * Twitter icon created by [riajulislam - Flaticon](https://www.flaticon.com/authors/riajulislam)
+ * Imdb icon created by [freepik - Flaticon](https://www.flaticon.com/authors/freepik)
 <!-- TODO: List any blog posts, tutorials or plugins that you may have used to complete the project. Only list those that had a significant impact. Obviously, we all 'Google' stuff while working on our things, but maybe something in particular stood out as a 'major contributor' to your skill set for this project. -->
