@@ -15,7 +15,7 @@ export default function CastList({ type, id }) {
       {actorsList.map((actor, index) => (
         <CastListCard actor={actor} index={index} />
       ))}
-      <div className="actor-card">show more</div>
+      <div className="card">show more</div>
     </div>
   );
 }

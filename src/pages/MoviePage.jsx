@@ -11,19 +11,22 @@ import {
 import { backgroundStyle } from "../components/utils/styling";
 import Video from "../components/Video";
 import "../css/moviePage.css";
+import LoadingPage from "./LoadingPage";
 export default function MoviePage({ type }) {
   let id = useParams().id;
   const [movie, setMovie] = useState(undefined);
   const [logo, setLogo] = useState(undefined);
   const [trailerId, setTrailerId] = useState("");
   const [trailerModal, setTrailerModal] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchMovie(type, id, setMovie);
     fetchLogo(type, id, setLogo);
     fetchTrailer(type, id, setTrailerId);
   }, []);
-  if (!movie) return <div>loading</div>;
+
+  if (loading) return <LoadingPage />;
   return (
     <div className="page" style={backgroundStyle(movie.backdrop_path)}>
       <img className="logo" src={logo} />
