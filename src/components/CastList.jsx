@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchActors, imgUrl } from "./utils/api";
 import "../css/actorList.css";
 import { Link } from "react-router-dom";
+import CastListCard from "./CastListCard";
 
 export default function CastList({ type, id }) {
   const [actorsList, setActorsList] = useState([]);
@@ -11,11 +12,8 @@ export default function CastList({ type, id }) {
 
   return (
     <div className="cast-list">
-      {actorsList.map((actor) => (
-        <Link to={"/actor/" + actor.id} key={actor.id} className="actor-card">
-          <img className="actor-img" src={imgUrl + actor.profile_path} />
-          <div className="actor-title">{actor.name}</div>
-        </Link>
+      {actorsList.map((actor, index) => (
+        <CastListCard actor={actor} index={index} />
       ))}
       <div className="actor-card">show more</div>
     </div>
