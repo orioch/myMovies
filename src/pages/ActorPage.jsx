@@ -15,6 +15,7 @@ export default function ActorPage() {
   const [person, setPerson] = useState(undefined);
   const [externalLinks, setExternalLinks] = useState([]);
   const [loading, setLoading] = useState(true);
+
   let id = useParams().id;
 
   useEffect(() => {
@@ -22,6 +23,11 @@ export default function ActorPage() {
     fetchExternalLinks("person", id, setExternalLinks);
   }, []);
 
+  const finishLoading = () => {
+    setTimeout(() => {
+      setLoading(false);
+    }, Math.floor(Math.random() * 1000));
+  };
   if (!person) return <div>loading</div>;
   return (
     <React.Fragment>
@@ -29,7 +35,11 @@ export default function ActorPage() {
         <ColorRing />
       </div>
       <div className={loading ? "actor-page hidden" : "actor-page"}>
-        <ActorInfoCard person={person} externalLinks={externalLinks} />
+        <ActorInfoCard
+          finishLoading={finishLoading}
+          person={person}
+          externalLinks={externalLinks}
+        />
         <ActorOverview person={person} />
       </div>
     </React.Fragment>
