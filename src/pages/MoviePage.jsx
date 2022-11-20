@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CastList from "../components/CastList";
 import {
+  fetchActors,
   fetchLogo,
   fetchMovie,
   fetchTrailer,
@@ -32,6 +34,7 @@ export default function MoviePage({ type }) {
       >
         Watch Trailer
       </button>
+      <CastList type={type} id={id} />
       <Video
         id={trailerId}
         isOpen={trailerModal}
