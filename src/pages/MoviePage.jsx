@@ -31,14 +31,6 @@ export default function MoviePage({ type }) {
     }
   }, [logo]);
   // if the fetch didnt end
-  if (!movie)
-    return (
-      <div className="page" style={backgroundStyle()}>
-        <div className={`loading ${loading}`}>
-          <ColorRing />
-        </div>{" "}
-      </div>
-    );
 
   const finishLoading = () => {
     setTimeout(() => {
@@ -50,29 +42,31 @@ export default function MoviePage({ type }) {
       <div className={`loading ${loading}`}>
         <ColorRing />
       </div>
-      <div
-        className={loading ? "page hidden" : "page"}
-        style={backgroundStyle(movie.backdrop_path)}
-      >
-        {logo == "" ? (
-          <h1 className="logo">{movie.name}</h1>
-        ) : (
-          <img onLoad={finishLoading} className="logo" src={logo} />
-        )}
-        <div className="overview">{movie.overview}</div>
-        <button
-          onClick={() => setTrailerModal(!trailerModal)}
-          className="play-btn"
+      {movie ? (
+        <div
+          className={loading ? "page hidden" : "page"}
+          style={backgroundStyle(movie.backdrop_path)}
         >
-          Watch Trailer
-        </button>
-        {loading ? null : <CastList type={type} id={id} />}
-        <Video
-          id={trailerId}
-          isOpen={trailerModal}
-          handleOpen={setTrailerModal}
-        />
-      </div>
+          {logo == "" ? (
+            <h1 className="logo">{movie.name}</h1>
+          ) : (
+            <img onLoad={finishLoading} className="logo" src={logo} />
+          )}
+          <div className="overview">{movie.overview}</div>
+          <button
+            onClick={() => setTrailerModal(!trailerModal)}
+            className="play-btn"
+          >
+            Watch Trailer
+          </button>
+          {loading ? null : <CastList type={type} id={id} />}
+          <Video
+            id={trailerId}
+            isOpen={trailerModal}
+            handleOpen={setTrailerModal}
+          />
+        </div>
+      ) : null}
     </React.Fragment>
   );
 }
