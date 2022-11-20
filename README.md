@@ -39,7 +39,8 @@ You can see a live demo of the project in [oriochayon.com/myMovies](https://orio
 <!-- TODO: Include icons and links to your RELEVANT, PROFESSIONAL 'DEV-ORIENTED' social media. LinkedIn and dev.to are minimum. -->
 
 ## Acknowledgements
-
+### api
+the all project is powered by [The Movie Database (TMDB) api](https://developers.themoviedb.org/3)
 ### media and icons
  * Instagram and Facebook icons created by [Pixel perfect - Flaticon](https://www.flaticon.com/authors/pixel-perfect)
  * Twitter icon created by [riajulislam - Flaticon](https://www.flaticon.com/authors/riajulislam)
