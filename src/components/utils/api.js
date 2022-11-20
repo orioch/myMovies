@@ -90,3 +90,17 @@ export const fetchExternalLinks = async (type, id, setFunction) => {
   setFunction(externalLinks);
   return response;
 };
+
+export const fetchActorCredits = async (
+  listType,
+  creditType,
+  id,
+  setFunction,
+  amount
+) => {
+  const url = `https://api.themoviedb.org/3/person/${id}/${type}?api_key=${apiKey}&language=en-US`;
+  let response = await (await fetch(url)).json();
+  let credits = response.cast.slice(0, amount);
+  setFunction(cast);
+  return cast;
+};

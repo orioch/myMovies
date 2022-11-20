@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ActorInfoCard from "../components/ActorInfoCard";
 import ActorOverview from "../components/ActorOverview";
+import Slider from "../components/Slider";
 import {
   fetchExternalLinks,
   fetchPerson,

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactShowMoreText from "react-show-more-text";
+import Slider from "./Slider";
 
 export default function ActorOverview({ person }) {
   return (
@@ -14,6 +15,7 @@ export default function ActorOverview({ person }) {
       >
         <p>{person.biography}</p>
       </ReactShowMoreText>
+      <Slider listType="person" listName="combined_credits" id={person.id} />
     </div>
   );
 }

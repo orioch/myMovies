@@ -5,10 +5,11 @@ import { fetchList } from "./utils/api";
 import "../css/slider.css";
 import { Link } from "react-router-dom";
 
-export default function Slider({ listType, listName }) {
+export default function Slider({ listType, id, listName }) {
   const [list, setList] = useState([]);
   useEffect(() => {
-    fetchList(listType, listName, setList);
+    if (listType == "person") {
+    } else fetchList(listType, listName, id, setList);
   }, []);
 
   return (
