@@ -27,7 +27,6 @@ export const fetchList = async (listType, listName, setFunction) => {
 export const fetchMovie = async (type, id, setFunction) => {
   const url = `https://api.themoviedb.org/3/${type}/${id}?api_key=${apiKey}&language=en-US`;
   let response = await (await fetch(url)).json();
-  console.log(response);
   if (setFunction) setFunction(response);
   return response;
 };
@@ -35,6 +34,10 @@ export const fetchMovie = async (type, id, setFunction) => {
 export const fetchLogo = async (type, id, setFunction) => {
   const url = `https://api.themoviedb.org/3/${type}/${id}/images?api_key=${apiKey}&language=en`;
   let response = await (await fetch(url)).json();
+  if (response.logos.length == 0) {
+    if (setFunction) setFunction("");
+    return "";
+  }
   if (setFunction) setFunction(imgUrl + response.logos[0].file_path);
 };
 
@@ -69,7 +72,6 @@ export const fetchPerson = async (id, setFunction) => {
     }
   });
   person.info = info;
-  console.log(person);
   if (setFunction) setFunction(person);
   return person;
 };
@@ -98,7 +100,6 @@ export const fetchActorCredits = async (
   setFunction,
   amount
 ) => {
-  console.log("im here");
   const url = `https://api.themoviedb.org/3/person/${id}/${listName}?api_key=${apiKey}&language=en-US`;
   let response = await (await fetch(url)).json();
   let credits = response[creditType].slice(0, amount);

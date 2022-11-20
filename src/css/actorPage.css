@@ -72,3 +72,11 @@ body {
 .overview-column .slider {
   margin-top: 50px;
 }
+
+.actor-page {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.actor-page.hidden {
+  opacity: 0;
+}
