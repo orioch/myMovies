@@ -21,8 +21,8 @@ export default function ({ actor, index }) {
         src={imgUrl + actor.profile_path}
       />
       <div className="actor-title">
-        <h1>{actor.name}</h1>
-        <h2>{actor.character}</h2>
+        {actor.name}
+        <br /> {actor.character}
       </div>
     </Link>
   );
