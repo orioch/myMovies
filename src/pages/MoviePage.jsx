@@ -27,7 +27,6 @@ export default function MoviePage({ type }) {
   }, []);
   useEffect(() => {
     if (logo == "") {
-      console.log("hi");
       setLoading(false);
     }
   }, [logo]);

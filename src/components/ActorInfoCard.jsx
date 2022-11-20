@@ -14,7 +14,6 @@ export default function ActorInfoCard({
 
   const imagesInComponent = externalLinks.length + 1;
   const imageLoaded = () => {
-    console.log(imagesInComponent);
     setLoadedImagesCounter((prev) => prev + 1);
   };
   const getInfoValueJsx = ({ title, value }) => {
