@@ -4,28 +4,27 @@ import { useSelector } from "react-redux";
 import { fetchActorCredits, fetchList } from "./utils/api";
 import "../css/slider.css";
 import { Link } from "react-router-dom";
+import { ColorRing } from "react-loader-spinner";
+import SliderCard from "./SliderCard";
 
 export default function Slider({ listType, id, listName }) {
   const [list, setList] = useState([]);
   useEffect(() => {
-    if (listType == "person") {
-      fetchActorCredits(listName, "cast", id, setList, 10);
-    } else fetchList(listType, listName, setList);
+    setTimeout(() => {
+      if (listType == "person") {
+        fetchActorCredits(listName, "cast", id, setList, 10);
+      } else fetchList(listType, listName, setList);
+    }, 0);
   }, []);
 
   return (
     <div className="slider">
-      {list.map((item) => (
-        <Link
-          to={`/${item.media_type}/${item.id}`}
-          key={item.id}
-          className="card"
-        >
-          <img
-            className="poster"
-            src={"https://image.tmdb.org/t/p/original" + item.poster_path}
-          />
-        </Link>
+      {list.map((item, index) => (
+        <SliderCard
+          listType={listType == "person" ? item.media_type : listType}
+          index={index}
+          item={item}
+        />
       ))}
     </div>
   );
