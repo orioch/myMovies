@@ -47,7 +47,7 @@ export default function MoviePage({ type }) {
     }, Math.floor(Math.random() * 1000));
   };
   return (
-    <div>
+    <React.Fragment>
       <div className={`loading ${loading}`}>
         <ColorRing />
       </div>
@@ -74,6 +74,6 @@ export default function MoviePage({ type }) {
           handleOpen={setTrailerModal}
         />
       </div>
-    </div>
+    </React.Fragment>
   );
 }
