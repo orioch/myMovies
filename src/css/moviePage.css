@@ -120,3 +120,26 @@ body {
     margin: 40px 10px 0 10px;
   }
 }
+
+.loading {
+  height: 100vh;
+  position: fixed;
+  left: 50vw;
+  transition: opacity 1s, top 1s;
+}
+.loading.true {
+  opacity: 1;
+  top: 50vh;
+}
+.loading.false {
+  opacity: 0;
+  top: 0;
+}
+
+.page {
+  opacity: 1;
+  transition: opacity 1s;
+}
+.page.hidden {
+  opacity: 0;
+}

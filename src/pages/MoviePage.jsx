@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ColorRing } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 import CastList from "../components/CastList";
 import {
@@ -11,7 +12,6 @@ import {
 import { backgroundStyle } from "../components/utils/styling";
 import Video from "../components/Video";
 import "../css/moviePage.css";
-import LoadingPage from "./LoadingPage";
 export default function MoviePage({ type }) {
   let id = useParams().id;
   const [movie, setMovie] = useState(undefined);
@@ -25,24 +25,45 @@ export default function MoviePage({ type }) {
     fetchLogo(type, id, setLogo);
     fetchTrailer(type, id, setTrailerId);
   }, []);
+  // if the fetch didnt end
+  if (!movie)
+    return (
+      <div className="page" style={backgroundStyle()}>
+        <div className={`loading ${loading}`}>
+          <ColorRing />
+        </div>{" "}
+      </div>
+    );
 
-  if (loading) return <LoadingPage />;
+  const finishLoading = () => {
+    setTimeout(() => {
+      setLoading(false);
+    }, Math.floor(Math.random() * 1000));
+  };
   return (
-    <div className="page" style={backgroundStyle(movie.backdrop_path)}>
-      <img className="logo" src={logo} />
-      <div className="overview">{movie.overview}</div>
-      <button
-        onClick={() => setTrailerModal(!trailerModal)}
-        className="play-btn"
+    <div>
+      <div className={`loading ${loading}`}>
+        <ColorRing />
+      </div>
+      <div
+        className={loading ? "page hidden" : "page"}
+        style={backgroundStyle(movie.backdrop_path)}
       >
-        Watch Trailer
-      </button>
-      <CastList type={type} id={id} />
-      <Video
-        id={trailerId}
-        isOpen={trailerModal}
-        handleOpen={setTrailerModal}
-      />
+        <img onLoad={finishLoading} className="logo" src={logo} />
+        <div className="overview">{movie.overview}</div>
+        <button
+          onClick={() => setTrailerModal(!trailerModal)}
+          className="play-btn"
+        >
+          Watch Trailer
+        </button>
+        {loading ? null : <CastList type={type} id={id} />}
+        <Video
+          id={trailerId}
+          isOpen={trailerModal}
+          handleOpen={setTrailerModal}
+        />
+      </div>
     </div>
   );
 }
