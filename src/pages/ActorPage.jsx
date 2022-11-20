@@ -28,20 +28,22 @@ export default function ActorPage() {
       setLoading(false);
     }, Math.floor(Math.random() * 1000));
   };
-  if (!person) return <div>loading</div>;
+
   return (
     <React.Fragment>
       <div className={`loading ${loading}`}>
         <ColorRing />
       </div>
-      <div className={loading ? "actor-page hidden" : "actor-page"}>
-        <ActorInfoCard
-          finishLoading={finishLoading}
-          person={person}
-          externalLinks={externalLinks}
-        />
-        <ActorOverview person={person} />
-      </div>
+      {person ? (
+        <div className={loading ? "actor-page hidden" : "actor-page"}>
+          <ActorInfoCard
+            finishLoading={finishLoading}
+            person={person}
+            externalLinks={externalLinks}
+          />
+          <ActorOverview person={person} />
+        </div>
+      ) : null}
     </React.Fragment>
   );
 }
