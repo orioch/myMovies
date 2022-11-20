@@ -48,7 +48,7 @@ export default function MoviePage({ type }) {
           style={backgroundStyle(movie.backdrop_path)}
         >
           {logo == "" ? (
-            <h1 className="logo">{movie.name}</h1>
+            <h1 className="logo">{movie.name || movie.title}</h1>
           ) : (
             <img onLoad={finishLoading} className="logo" src={logo} />
           )}
