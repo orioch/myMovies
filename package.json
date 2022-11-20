@@ -1,6 +1,7 @@
 {
   "name": "mymovies",
   "version": "0.1.0",
+  "homepage": "https://oriochayon.com/myMovies",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
