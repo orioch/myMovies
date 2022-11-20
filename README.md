@@ -1,5 +1,5 @@
 # MyMovies
-(I'm still working on creating this project, but you can access what I have made so far)
+(I'm still working on creating this project, but you can access what I have made so far, and also look at the next [work items](https://github.com/orioch/myMovies/issues) i am planning to do.)
 
 ## Table of Contents
 
