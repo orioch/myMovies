@@ -13,6 +13,7 @@
 ## Overview
 
 This project is a movie database and search engine made with ReactJS and powered by [The Movie Database (TMDB)](https://developers.themoviedb.org/3).
+
 ![screenshot](https://github.com/orioch/myMovies/blob/main/Screen%20Shot%202022-11-20%20at%2012.16.28.png?raw=true)
 
 ## Live Demo
