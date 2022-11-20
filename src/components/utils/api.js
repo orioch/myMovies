@@ -34,6 +34,10 @@ export const fetchMovie = async (type, id, setFunction) => {
 export const fetchLogo = async (type, id, setFunction) => {
   const url = `https://api.themoviedb.org/3/${type}/${id}/images?api_key=${apiKey}&language=en`;
   let response = await (await fetch(url)).json();
+  if (response.logos.length == 0) {
+    if (setFunction) setFunction("");
+    return "";
+  }
   if (setFunction) setFunction(imgUrl + response.logos[0].file_path);
 };
 

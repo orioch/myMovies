@@ -25,6 +25,12 @@ export default function MoviePage({ type }) {
     fetchLogo(type, id, setLogo);
     fetchTrailer(type, id, setTrailerId);
   }, []);
+  useEffect(() => {
+    if (logo == "") {
+      console.log("hi");
+      setLoading(false);
+    }
+  }, [logo]);
   // if the fetch didnt end
   if (!movie)
     return (
@@ -49,7 +55,11 @@ export default function MoviePage({ type }) {
         className={loading ? "page hidden" : "page"}
         style={backgroundStyle(movie.backdrop_path)}
       >
-        <img onLoad={finishLoading} className="logo" src={logo} />
+        {logo == "" ? (
+          <h1 className="logo">{movie.name}</h1>
+        ) : (
+          <img onLoad={finishLoading} className="logo" src={logo} />
+        )}
         <div className="overview">{movie.overview}</div>
         <button
           onClick={() => setTrailerModal(!trailerModal)}
