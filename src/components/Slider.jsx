@@ -31,6 +31,7 @@ export default function Slider({ listType, id, listName }) {
       className="slider"
       totalSlides={list.length}
       visibleSlides={7}
+      step={7}
     >
       <CarouselSlider>
         {list.map((item, index) => (
@@ -43,6 +44,8 @@ export default function Slider({ listType, id, listName }) {
           </Slide>
         ))}
       </CarouselSlider>
+      <ButtonBack>Back</ButtonBack>
+      <ButtonNext>Next</ButtonNext>
     </CarouselProvider>
   );
   return (
