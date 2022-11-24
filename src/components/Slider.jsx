@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { fetchActorCredits, fetchList } from "./utils/api";
@@ -17,6 +17,9 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
 export default function Slider({ listType, id, listName }) {
+  const containerRef = useRef(null);
+
+  const [width, setWidth] = useState(0);
   const [list, setList] = useState([]);
   useEffect(() => {
     setTimeout(() => {
@@ -25,26 +28,44 @@ export default function Slider({ listType, id, listName }) {
       } else fetchList(listType, listName, setList);
     }, 0);
   }, []);
+  // determen the width state to be the width of chart-container
+  useLayoutEffect(() => {
+    setWidth(containerRef.current.offsetWidth);
+  }, [containerRef]);
+
+  //if screen size chage, change the width
+  useEffect(() => {
+    window.addEventListener(
+      "resize",
+      () => {
+        setWidth(containerRef.current.offsetWidth);
+      },
+      false
+    );
+  }, []);
+
   return (
     <CarouselProvider
       className="slider"
       naturalSlideWidth={80}
       naturalSlideHeight={130}
       totalSlides={list.length}
-      visibleSlides={7}
-      step={7}
+      visibleSlides={Math.round(width / 200)}
+      step={Math.round(width / 200)}
     >
-      <CarouselSlider>
-        {list.map((item, index) => (
-          <Slide index={index}>
-            <SliderCard
-              listType={listType == "person" ? item.media_type : listType}
-              index={index}
-              item={item}
-            />
-          </Slide>
-        ))}
-      </CarouselSlider>
+      <div className="slider-container" ref={containerRef}>
+        <CarouselSlider>
+          {list.map((item, index) => (
+            <Slide index={index}>
+              <SliderCard
+                listType={listType == "person" ? item.media_type : listType}
+                index={index}
+                item={item}
+              />
+            </Slide>
+          ))}
+        </CarouselSlider>
+      </div>
       <ButtonBack className="arrow-btn left">
         <AiFillCaretLeft />
       </ButtonBack>
