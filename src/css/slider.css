@@ -1,13 +1,36 @@
 .slider {
+  margin: 10px;
+  padding: 40px 40px 0 40px;
+  height: 100%;
+  /* background-color: aqua; */
+  position: relative;
 }
 
+.arrow-btn {
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  color: aliceblue;
+  position: absolute;
+  top: 70px;
+  font-size: 30px;
+}
+.arrow-btn:disabled {
+  color: rgb(121, 122, 124);
+}
+.arrow-btn.left {
+  left: 0px;
+}
+.arrow-btn.right {
+  right: 0px;
+}
 .card.hide {
 }
 
 .slider .card {
   width: 180px;
   height: 245px;
-  margin: 0 10px 0 10px;
+  /* margin: 0 10px 0 10px; */
   display: flex;
   justify-content: center;
   align-items: center;

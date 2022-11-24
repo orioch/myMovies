@@ -14,6 +14,7 @@ import {
   ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
+import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
 export default function Slider({ listType, id, listName }) {
   const [list, setList] = useState([]);
@@ -26,9 +27,9 @@ export default function Slider({ listType, id, listName }) {
   }, []);
   return (
     <CarouselProvider
-      naturalSlideWidth={100}
-      naturalSlideHeight={125}
       className="slider"
+      naturalSlideWidth={80}
+      naturalSlideHeight={130}
       totalSlides={list.length}
       visibleSlides={7}
       step={7}
@@ -44,8 +45,12 @@ export default function Slider({ listType, id, listName }) {
           </Slide>
         ))}
       </CarouselSlider>
-      <ButtonBack>Back</ButtonBack>
-      <ButtonNext>Next</ButtonNext>
+      <ButtonBack className="arrow-btn left">
+        <AiFillCaretLeft />
+      </ButtonBack>
+      <ButtonNext className="arrow-btn right">
+        <AiFillCaretRight />
+      </ButtonNext>
     </CarouselProvider>
   );
   return (
