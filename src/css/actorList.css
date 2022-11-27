@@ -1,9 +1,4 @@
-.cast-list {
-  display: flex;
-  flex-direction: row;
-  overflow: scroll;
-}
-.cast-list .card {
+.cast.slider .card {
   cursor: pointer;
   overflow: hidden;
   border-radius: 20px;
@@ -12,11 +7,13 @@
   height: 300px;
   width: auto;
   min-width: 160px;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 4px 8px 0 rgba(123, 123, 123, 0.324);
   transition: min-width 1s, height 1s, opacity 2s;
 }
 
-.cast-list .card:hover {
+.cast.slider .card:hover {
   height: 320px;
   min-width: 170.6px;
 }

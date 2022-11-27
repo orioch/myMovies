@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { fetchActorCredits, fetchList } from "./utils/api";
+import { fetchActorCredits, fetchActors, fetchList } from "./utils/api";
 import "../css/slider.css";
 import { Link } from "react-router-dom";
 import { ColorRing } from "react-loader-spinner";
@@ -15,6 +15,7 @@ import {
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
+import CastListCard from "./CastListCard";
 
 export default function Slider({ listType, id, listName }) {
   const containerRef = useRef(null);
@@ -25,6 +26,8 @@ export default function Slider({ listType, id, listName }) {
     setTimeout(() => {
       if (listType == "person") {
         fetchActorCredits(listName, "cast", id, setList, 10);
+      } else if (listName == "cast") {
+        fetchActors(listType, id, setList, 10);
       } else fetchList(listType, listName, setList);
     }, 0);
   }, []);
@@ -46,9 +49,9 @@ export default function Slider({ listType, id, listName }) {
 
   return (
     <CarouselProvider
-      className="slider"
+      className={listName == "cast" ? "cast slider" : "slider"}
       naturalSlideWidth={80}
-      naturalSlideHeight={130}
+      naturalSlideHeight={listName == "cast" ? 260 : 120}
       totalSlides={list.length}
       visibleSlides={Math.round(width / 200)}
       step={Math.round(width / 200)}
@@ -57,11 +60,15 @@ export default function Slider({ listType, id, listName }) {
         <CarouselSlider>
           {list.map((item, index) => (
             <Slide index={index}>
-              <SliderCard
-                listType={listType == "person" ? item.media_type : listType}
-                index={index}
-                item={item}
-              />
+              {listName == "cast" ? (
+                <CastListCard actor={item} index={index} />
+              ) : (
+                <SliderCard
+                  listType={listType == "person" ? item.media_type : listType}
+                  index={index}
+                  item={item}
+                />
+              )}
             </Slide>
           ))}
         </CarouselSlider>
