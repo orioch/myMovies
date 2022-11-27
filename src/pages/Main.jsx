@@ -13,6 +13,7 @@ export default function Main() {
     dispatch(getList({ listType: "tv", listName: "top_rated" }));
     dispatch(getList({ listType: "tv", listName: "on_the_air" }));
   }, []);
+
   return (
     <div>
       <Slider listType="movie" listName="popular" />

@@ -1,9 +1,9 @@
 body {
   background: #010100;
+  min-height: fit-content;
 }
 
 .page {
-  height: 100vh;
   background-repeat: no-repeat;
   background-size: 100vw;
   display: flex;
@@ -146,4 +146,8 @@ h1.logo {
 }
 .page.hidden {
   opacity: 0;
+}
+
+.page .slider {
+  margin-bottom: 60px;
 }

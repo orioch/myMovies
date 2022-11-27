@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ColorRing } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
 import CastList from "../components/CastList";
+import Slider from "../components/Slider";
 import {
   fetchActors,
   fetchLogo,
@@ -59,7 +60,7 @@ export default function MoviePage({ type }) {
           >
             Watch Trailer
           </button>
-          {loading ? null : <CastList type={type} id={id} />}
+          {loading ? null : <Slider listType={type} listName="cast" id={id} />}
           <Video
             id={trailerId}
             isOpen={trailerModal}
