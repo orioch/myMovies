@@ -1,17 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Video from "./components/Video";
-import { useDispatch } from "react-redux";
-import { getList } from "./redux/features/listSlice";
-import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import MoviePage from "./pages/MoviePage";
 import ActorPage from "./pages/ActorPage";
 
 function App() {
-  const dispatch = useDispatch();
-
   return (
     <div className="App">
       <Routes>
