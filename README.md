@@ -1,6 +1,8 @@
 # MyMovies
 (I'm still working on creating this project, but you can access what I have made so far, and also look at the next [work items](https://github.com/orioch/myMovies/issues) i am planning to do.)
 
+This project does not use Redux because it not have any problems with props drilling. I may consider using Redux in the future if I encounter the need for a global state management solution.
+
 ## Table of Contents
 
 - [Overview](#overview)
