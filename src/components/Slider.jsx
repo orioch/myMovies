@@ -17,26 +17,50 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import CastListCard from "./CastListCard";
 
+/**
+ * This Component takes in 3 props: listType, id, and listName.
+ * It uses the listType and listName props to make an API call
+ * to fetch a list of items to be displayed in a slider.
+ * If the listType is "person" and the listName is "cast", the component will make
+ * a call to fetch the cast of a movie or TV show.
+ * Otherwise, the component will make a call to fetch a list of movies or
+ * TV shows depending on the listType and listName props.
+ * The id prop is used to specify the specific movie or TV show to
+ * fetch the cast for when the listType is "person" and the listName is "cast".
+ */
 export default function Slider({ listType, id, listName }) {
-  const containerRef = useRef(null);
+  const containerRef = useRef(null); // This useRef reference the Slider container so we can access its width.
 
-  const [width, setWidth] = useState(0);
-  const [list, setList] = useState([]);
+  const [width, setWidth] = useState(0); // This state stores the width of the container element. It is initially set to 0 and then updated every time the width changing.
+  const [list, setList] = useState([]); // This state stores the list of items to be displayed in the slider. It is initially an empty array and then updated with data from the API when the component is mounted.
+
+  /**
+   *  This useEffect is responsible for fetching data from the API when the copmpoennt mounted
+   */
   useEffect(() => {
-    setTimeout(() => {
-      if (listType == "person") {
-        fetchActorCredits(listName, "cast", id, setList, 10);
-      } else if (listName == "cast") {
-        fetchActors(listType, id, setList, 10);
-      } else fetchList(listType, listName, setList);
-    }, 0);
+    if (listType == "person") {
+      fetchActorCredits(listName, "cast", id, setList, 10);
+    } else if (listName == "cast") {
+      fetchActors(listType, id, setList, 10);
+    } else fetchList(listType, listName, setList);
   }, []);
-  // determen the width state to be the width of chart-container
+
+  /**
+   * This useEffect runs a callback function that updates the width state
+   * to the current width of the container element.
+   * It does this by using the containerRef variable,
+   * which is a reference to the container element,
+   * and accessing its offsetWidth property.
+   */
   useLayoutEffect(() => {
     setWidth(containerRef.current.offsetWidth);
   }, [containerRef]);
 
-  //if screen size chage, change the width
+  /**
+   * This useEffect adds an event listener to the resize event on the window object.
+   * When this event is triggered, the width state is updated to the current width
+   * of the container element.
+   */
   useEffect(() => {
     window.addEventListener(
       "resize",
